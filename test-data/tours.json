@@ -1,0 +1,20 @@
+{
+  "tours": [
+    {
+      "title": "London, Paris, Rome",
+      "code": "lpr"
+    },
+    {
+      "title": "Italy and Greece",
+      "code": "itg"
+    },
+    {
+      "title": "China: Beijing, Xi'an and Shanghai",
+      "code": "chk"
+    },
+    {
+      "title": "Discover Panama",
+      "code": "paa"
+    }
+  ]
+}

@@ -11,7 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "cors": "^2.8.4",
     "express": "^4.15.2",
+    "isomorphic-unfetch": "^2.0.0",
     "next": "^4.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
