@@ -1,0 +1,2 @@
+define("core/global/social",["jquery"],function(t){!function(t,e,r){var i,n=t.getElementsByTagName(e)[0],c=/^http:/.test(t.location)?"http":"https";t.getElementById(r)||(i=t.createElement(e),i.id=r,i.src=c+"://platform.twitter.com/widgets.js",n.parentNode.insertBefore(i,n))}(document,"script","twitter-wjs"),t(".referral-link-box").click(function(){var t=this;t.select()})});
+//# sourceMappingURL=social.js.map

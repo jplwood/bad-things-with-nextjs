@@ -20,7 +20,6 @@ const Index = (props) => (
 );
 
 Index.getInitialProps = async function() {
-  console.log(tours);
   return { tours };
 }
 

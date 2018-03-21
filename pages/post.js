@@ -1,33 +1,28 @@
-import Layout from '../components/MyLayout.js';
-import fetch from 'isomorphic-unfetch';
-import cheerio from 'cheerio';
+import Layout from "../components/MyLayout.js";
 
-const Post =  (props) => (
-    <Layout>
-      <h1>{props.tourName}</h1>
-       <h2>{props.itinerary.title}</h2>
-       <div dangerouslySetInnerHTML={{__html: props.itinerary.html}}></div>
-       {/* <p>{props.show.summary.replace(/<[/]?p>/g, '')}</p>
-       <img src={props.show.image.medium}/> */}
-    </Layout>
-)
 
-Post.getInitialProps = async function (context) {
-  const { id } = context.query
-  const res = await fetch(`https://www.eftours.com/${id}`)
-  const html = await res.text()
+const Post = props => (
+  <Layout>
+    <div className={"page-with-header-image"}>
+      <div dangerouslySetInnerHTML={{ __html: props.mainStyle + props.gtmScript  }} />
+      <div dangerouslySetInnerHTML={{ __html: props.scriptBundles }} />
+      <style>{`body{background-color:#fff}`}</style>
 
-  const $ = cheerio.load(html);
+      <div dangerouslySetInnerHTML={{ __html: props.tourHeader }} />
+      <div dangerouslySetInnerHTML={{ __html: props.itinerary }} />
+      {/* <div dangerouslySetInnerHTML={{ __html: props.panelizrScripts }} /> */}
+      <script type="text/javascript" defer src="//media.eftours.com/Content/js/libs/jquery-2.1.1.min.js" />
 
-  const tourName = $(".tour-name").first().html();
-  console.log(id);
-  const itinerary = {
-      title: "Itinerary",
-      html: $("#itinerary").html()
-  }
 
-  
-  return { tourName, itinerary };
-}
+    </div>
+  </Layout>
+);
 
-export default Post
+Post.getInitialProps = async function({req, query}) {
+  const { id } = query;
+  const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
+  const res = await fetch(`${baseUrl}/api/lowfat/${id}`);
+  return await res.json();
+};
+
+export default Post;
